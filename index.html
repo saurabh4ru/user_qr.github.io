@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Redirect</title>
+    <script>
+        // Function to extract parameters from the URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Function to redirect to the desired link
+        function redirectToLink() {
+            var email = getParameterByName('email');
+            var name = getParameterByName('name');
+
+            if (email && name) {
+                var link = 'https://example.com/?email=' + encodeURIComponent(email) + '&name=' + encodeURIComponent(name);
+                window.location.href = link;
+            } else {
+                alert('Invalid parameters');
+            }
+        }
+
+        // Call the redirection function on page load
+        window.onload = redirectToLink;
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+</body>
+</html>
