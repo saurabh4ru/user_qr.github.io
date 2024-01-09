@@ -10,7 +10,7 @@ for index, row in df.iterrows():
     name = row['Name']
 
     # Construct the URL with email and name parameters
-    url = f'https://yourwebsite.com/redirect-page?email={email}&name={name}'
+    url = f'https://saurabh4ru.github.io/user_qr.github.io/?email={email}&name={name}'
 
     # Generate QR code
     qr = qrcode.QRCode(
